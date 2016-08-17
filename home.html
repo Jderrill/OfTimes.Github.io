@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html ng-app="postsApp">
-  <head>
-  	<title>Blog Post</title>
+<head>
+  	<title>Of Times.</title>
   	<script type="text/javascript" src="js/lib/angular.min.js"></script>
   	<script type="text/javascript" src="js/lib/angular-resource.min.js"></script>
   	<script type="text/javascript" src="js/controllers/app.js"></script>
   	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 
-  </head>
-
-  <nav class="navbar navbar-default">
+</head>
+<nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -37,49 +36,30 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-
-  <body ng-controller="authorsController">
+    <body ng-controller="authorsController">
     <div class="container">
-     <div class="row">
-        <div class="col-sm-6">
+	     <div class="row">
+	        <div class="col-sm-6">
 
-      	  	    <h2>Of Times.</h2>
-                <h4>100% Gluten Free since 1909</h4>
+	      	  	    <h2>Of Times.</h2>
+	                <h4>100% Gluten Free since 1909</h4>
 
-        </div>
-    	</div>
+	        </div>
+	    </div>
       <div class="row spacer"></div>
-
-      <div class="row text-center">
-        <div class="col-md-4 col-md-offset-4">
-          <div class="well">
-            <h4>{{currentPost.title}}</h3>
-          </div>
+      <div class="row">
+      	<div class="col-lg-8">
+          <div class="well" ng-repeat="post in posts">
+          	<a href="index.html" ng-click="setPost(post.id)">
+          		<h4>{{post.title}}</h4>
+            	{{post.summary}}<br>
+            	<i>{{post.date}}</i>
+        	</a>
+        	<li>{{currentPost.id}}</li>
+           </div>
         </div>
       </div>
 
-      <div class="row">
-      	<div class="col-sm-2">
-      		<div class="well">
-      			Post By: {{posts["1"].author}}<br>
-            <i>{{posts["1"].date}}</i> <br>
-            <img src={{posts["1"].pic}}> </img><br>
-            <i>{{posts["1"].quote}}</i>
-      		</div>
-        </div>
-        <div class="col-lg-8">
-          
-            {{posts["1"].post}}
 
-          
-        </div>
-
-    </div>
-    <div class="row text-center footer">
-      &copy Jamrin inc. 
-    </div>
-  <body>
-
-
-
-</html>
+     </div>
+    </body>

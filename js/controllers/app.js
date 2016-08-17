@@ -5,15 +5,20 @@ var james_quote = "With great power comes great electricity bill."
 var cori_quote = "\" quotes! \""
 var postsApp = angular.module('postsApp', []);
 
-postsApp.controller('authorsController', function authorsController($scope){
+var current2 = null;
+
+/*
+function postsApp($scope){
 	$scope.posts = {
 		"1" :{
+			"id" : "1",
 			"author" : "James",
 			"pic" : james_pic,
 			"quote" : james_quote,
 			"date" : "Aug 35, 2016",
 			"title" : "The Shish You Don't Know",
 			"media" : [],
+			"summary" : "So some things happened.",
 			"post" : "So some things happened. \
 			So some things happened. So some things happened. \
 			So some things happened. So some things happened. \
@@ -22,8 +27,60 @@ postsApp.controller('authorsController', function authorsController($scope){
 			So some things happened. So some things happened. "
 
 		}
+	}
+
+	$scope.currentPost = null;
+
+	$scope.setPost = function(id){
+		$scope.currentPost = $scope.posts[id];
+	}	
+}
+
+*/
+postsApp.controller('authorsController', ['$scope', function($scope){
+	$scope.posts = {
+		"1" :{
+			"id" : "1",
+			"author" : "James",
+			"pic" : james_pic,
+			"quote" : james_quote,
+			"date" : "Aug 35, 2016",
+			"title" : "The Shish You Don't Know",
+			"media" : [],
+			"summary" : "So some things happened.",
+			"post" : "So some things happened. \
+			So some things happened. So some things happened. \
+			So some things happened. So some things happened. \
+			So some things happened. So some things happened. \
+			So some things happened. So some things happened. \
+			So some things happened. So some things happened. "
+
+		},
+		"2" :{
+		"id" : "2",
+		"author" : "Cori",
+		"pic" : cori_pic,
+		"quote" : cori_quote,
+		"date" : "Aug 36, 2017",
+		"title" : "The Shish You DO Know",
+		"media" : [],
+		"summary" : "So no things happened.",
+		"post" : "So some things happened. \
+		So some things happened. So some things happened. \
+		So some things happened. So some things happened. \
+		So some things happened. So some things happened. \
+		So some things happened. So some things happened. \
+		So some things happened. So some things happened. "
+
+	}
 	};
-});
+
+	$scope.currentPost = null;
+
+	$scope.setPost = function(id){
+		$scope.currentPost = $scope.posts[id];
+	};
+}]);
 
 
 
