@@ -3,42 +3,8 @@ var cori_pic = "http://news.nationalgeographic.com/news/2005/08/photogalleries/d
 
 var james_quote = "With great power comes great electricity bill."
 var cori_quote = "\" quotes! \""
-var postsApp = angular.module('postsApp', []);
 
-var current2 = null;
-
-/*
-function postsApp($scope){
-	$scope.posts = {
-		"1" :{
-			"id" : "1",
-			"author" : "James",
-			"pic" : james_pic,
-			"quote" : james_quote,
-			"date" : "Aug 35, 2016",
-			"title" : "The Shish You Don't Know",
-			"media" : [],
-			"summary" : "So some things happened.",
-			"post" : "So some things happened. \
-			So some things happened. So some things happened. \
-			So some things happened. So some things happened. \
-			So some things happened. So some things happened. \
-			So some things happened. So some things happened. \
-			So some things happened. So some things happened. "
-
-		}
-	}
-
-	$scope.currentPost = null;
-
-	$scope.setPost = function(id){
-		$scope.currentPost = $scope.posts[id];
-	}	
-}
-
-*/
-postsApp.controller('authorsController', ['$scope', function($scope){
-	$scope.posts = {
+var postsData = {
 		"1" :{
 			"id" : "1",
 			"author" : "James",
@@ -75,35 +41,33 @@ postsApp.controller('authorsController', ['$scope', function($scope){
 	}
 	};
 
-	$scope.currentPost = null;
 
-	$scope.setPost = function(id){
-		$scope.currentPost = $scope.posts[id];
-	};
-}]);
+var App = angular.module('postsApp', ['ngRoute']);
 
+App.config(function($routeProvider){
+	//set up routes
+	$routeProvider
+	.when('/',{
+		templateUrl: '/partials/index.html',
+		controller: 'authorsController'
+	})
+	.when('/posts/:id',{
+		templateUrl: '/partials/posts.html',
+		controller: 'postsController'
+	})
+	.otherwise({
+		redirectTo: '/'
+	});
+});
 
+App.controller('authorsController', function($scope){
+	$scope.posts = postsData
+});
 
+App.controller('postsController', function($scope,$routeParams){
+	//$scope.posts = postsData
+	currentId = $routeParams.id
 
-/*
-function AppCtrl ($scope){
-	$scope.authors = {
-		"James":{
-			"nme": "James",
-			"picture": "http://cicats.com/wp-content/uploads/2016/07/average-cat-lifespan-96x96.jpg"
-		},
-		"Cori":{
-			"name": "Cori",
-			"picture": "http://news.nationalgeographic.com/news/2005/08/photogalleries/dogclone/images/thumbnail/dog_clone3T.jpg"
-		}
-	}
-}
+	$scope.currentPost = postsData[currentId]
+});
 
-function getAuthors($scope){
-	$scope.authors = {
-		"Cori":{
-
-		}
-	}
-
-}*/
