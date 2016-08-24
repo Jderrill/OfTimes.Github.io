@@ -119,10 +119,7 @@ App.controller('postsController', function($scope,$routeParams, $sce){
 	currentId = $routeParams.id
 
 	$scope.currentPost = postsData[currentId]
-	console.log($scope.currentPost.post)
 	$scope.currentPost.post = $sce.trustAsHtml($scope.currentPost.post)
-	console.log($scope.currentPost.post)
-
 });
 
 App.controller('postsPageController', function($scope){
