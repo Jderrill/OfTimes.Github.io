@@ -6790,3 +6790,8 @@ button.close {
 .background{
   background-color: #FCFFF5;
 }
+
+img.resize{
+	max-width: 100%;
+	max-height: 100%;
+}

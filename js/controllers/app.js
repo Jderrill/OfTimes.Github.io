@@ -1,5 +1,5 @@
 var james_pic = "http://cicats.com/wp-content/uploads/2016/07/average-cat-lifespan-96x96.jpg"
-var cori_pic = "http://news.nationalgeographic.com/news/2005/08/photogalleries/dogclone/images/thumbnail/dog_clone3T.jpg"
+var cori_pic = "/media/close.jpg"
 
 var james_quote = "With great power comes great electricity bill."
 var cori_quote = "\" quotes! \""
